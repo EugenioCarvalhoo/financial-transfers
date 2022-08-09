@@ -1,5 +1,7 @@
 package br.com.bank.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -30,6 +32,7 @@ public class User {
     @OneToMany( fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private Account account;
-    
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+    private List<Order> order; 
     
 }
