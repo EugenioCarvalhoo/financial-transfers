@@ -2,6 +2,7 @@ package br.com.bank.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GeneratorType;
@@ -18,7 +20,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "user")
+@Table(name = "tb_user")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,10 +31,10 @@ public class User {
     private Long id;
     private String  fristName;
     private String lastName;
-    @OneToMany( fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
-    @OneToMany(mappedBy = "order_transfers", fetch = FetchType.LAZY)
-    private List<OrderTransfers> order; 
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<OrderTransfers> orderTransfers; 
     
 }

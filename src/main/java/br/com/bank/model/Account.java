@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -28,7 +29,6 @@ public class Account {
     private Long id;
     private String accountNumber;
     private BigDecimal amount;
-    @OneToMany( fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @OneToOne(mappedBy = "account")
     private User user;
 }

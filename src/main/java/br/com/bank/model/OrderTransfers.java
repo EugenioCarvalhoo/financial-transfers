@@ -24,6 +24,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Entity 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -39,7 +40,7 @@ public class OrderTransfers {
     private Date transferDate;
     private Date scheduleDate;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", referencedColumnName = "order_transfers", nullable = true)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
     
 }
