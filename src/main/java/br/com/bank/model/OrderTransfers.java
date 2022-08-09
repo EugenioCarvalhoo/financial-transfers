@@ -27,8 +27,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "order")
-public class Order {
+@Table(name = "order_transfers")
+public class OrderTransfers {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -39,7 +39,7 @@ public class Order {
     private Date transferDate;
     private Date scheduleDate;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", referencedColumnName = "order", nullable = true)
+    @JoinColumn(name = "user_id", referencedColumnName = "order_transfers", nullable = true)
     private User user;
     
 }

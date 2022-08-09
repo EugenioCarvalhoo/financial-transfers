@@ -32,7 +32,7 @@ public class User {
     @OneToMany( fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private Account account;
-    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
-    private List<Order> order; 
+    @OneToMany(mappedBy = "order_transfers", fetch = FetchType.LAZY)
+    private List<OrderTransfers> order; 
     
 }
