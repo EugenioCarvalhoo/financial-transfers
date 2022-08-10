@@ -27,7 +27,7 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String accountNumber;
+    private Integer accountNumber;
     private BigDecimal amount;
     @OneToOne(mappedBy = "account")
     private User user;
