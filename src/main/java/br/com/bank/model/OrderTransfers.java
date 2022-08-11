@@ -1,5 +1,6 @@
 package br.com.bank.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -24,7 +25,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "order_transfers")
-public class OrderTransfers {
+public class OrderTransfers implements Serializable {
+ 
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,7 +36,7 @@ public class OrderTransfers {
     private String  sourceAccount;
     private String destinationAccount;
     private BigDecimal transferValue;
-    @Setter(value = AccessLevel.NONE)
+    //@Setter(value = AccessLevel.NONE)
     private Date transferDate = DateUtil.getDate();
     private Date scheduleDate;
     @ManyToOne(fetch = FetchType.LAZY)

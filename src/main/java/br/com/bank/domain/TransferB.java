@@ -27,6 +27,7 @@ public class TransferB  extends BaseTransfer {
             BigDecimal destinationAmount = destination.getAmount()
             .add(transferValue);
             destination.setAmount(destinationAmount);
+            return;
         }
 
         throw new RuntimeException("Não existe taxa applicavel para este tipo de tranferêcia");

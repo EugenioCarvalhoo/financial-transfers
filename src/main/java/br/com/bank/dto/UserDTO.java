@@ -6,8 +6,10 @@ import java.util.ArrayList;
 
 import br.com.bank.model.User;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class UserDTO {
 
     private Long id;

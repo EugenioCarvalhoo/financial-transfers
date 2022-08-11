@@ -13,3 +13,6 @@ spring:
         format_sql: true
     show-sql: true
   h2.console.enabled: true
+  jackson:
+    time-zone: Brazil/East
+    locale: pt-BR

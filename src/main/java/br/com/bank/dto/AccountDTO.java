@@ -4,8 +4,10 @@ import java.math.BigDecimal;
 
 import br.com.bank.model.Account;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class AccountDTO {
 
     private Long id;

@@ -3,6 +3,8 @@ package br.com.bank.dto;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import br.com.bank.model.OrderTransfers;
 import br.com.bank.model.User;
 import br.com.bank.utils.DateUtil;
@@ -12,6 +14,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Data
+@NoArgsConstructor
 public class OrderTransfersDTO {
 
     private Long id;
@@ -19,7 +22,9 @@ public class OrderTransfersDTO {
     private String  sourceAccount;
     private String destinationAccount;
     private BigDecimal transferValue;
-    private Date transferDate;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private Date transferDate = DateUtil.getDate();
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date scheduleDate;
     private UserDTO user;
 
@@ -39,7 +44,10 @@ public class OrderTransfersDTO {
     public OrderTransfers parserModel() {
         OrderTransfers model = new OrderTransfers();
         model.setId(id);
+        model.setSourceAccount(sourceAccount);
         model.setTransferType(transferType);
+        model.setScheduleDate(scheduleDate);
+        model.setTransferDate(transferDate);
         model.setDestinationAccount(destinationAccount);
         model.setTransferValue(transferValue);
         if (getUser() != null) {
