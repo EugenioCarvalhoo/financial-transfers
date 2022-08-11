@@ -6,6 +6,7 @@ import java.util.Date;
 import br.com.bank.model.OrderTransfers;
 import br.com.bank.utils.Calculate;
 import br.com.bank.utils.DateUtil;
+import br.com.bank.dto.OrderTransfersDTO;
 
 public class TransferC extends BaseTransfer {
 
@@ -33,7 +34,7 @@ public class TransferC extends BaseTransfer {
     }
 
     @Override
-    public void execute(OrderTransfers orderTransfers) {
+    public void execute(OrderTransfersDTO orderTransfers) {
         Date scheduleDate = orderTransfers.getScheduleDate();
         Date transferDate = orderTransfers.getTransferDate();
         BigDecimal transferValue = orderTransfers.getTransferValue();
@@ -53,18 +54,18 @@ public class TransferC extends BaseTransfer {
             dispatchTax(TaxAbove.DAY40, transferValue);
             return;
         }
-        throw new RuntimeException("Não existe taxa applicavel para este tipo de tranferêcia");
+        throw new RuntimeException("Não existe taxa applicavél para este tipo de tranferência");
     }
 
     private void dispatchTax(TaxAbove taxAbove, BigDecimal transferValue) {
-            BigDecimal currentAmount = current.getAccount().getAmount()
+            BigDecimal currentAmount = current.getAmount()
                     .subtract(transferValue);
-            current.getAccount().setAmount(currentAmount);
+            current.setAmount(currentAmount);
 
             transferValue = Calculate.subtractPercentage(transferValue, new BigDecimal(taxAbove.percent()));
-            BigDecimal destinationAmount = destination.getAccount().getAmount()
+            BigDecimal destinationAmount = destination.getAmount()
                     .add(transferValue);
-            destination.getAccount().setAmount(destinationAmount);
+            destination.setAmount(destinationAmount);
     }
     
 }

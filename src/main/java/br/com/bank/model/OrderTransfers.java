@@ -30,8 +30,8 @@ public class OrderTransfers {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String  transferType;
-    private Integer  sourceAccount;
-    private Integer destinationAccount;
+    private String  sourceAccount;
+    private String destinationAccount;
     private BigDecimal transferValue;
     @Setter(value = AccessLevel.NONE)
     private Date transferDate = DateUtil.getDate();

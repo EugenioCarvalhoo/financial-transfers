@@ -1,5 +1,6 @@
 package br.com.bank.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -35,6 +36,6 @@ public class User {
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private List<OrderTransfers> orderTransfers; 
+    private List<OrderTransfers> orderTransfers = new ArrayList<>(); 
     
 }

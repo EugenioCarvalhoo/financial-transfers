@@ -8,4 +8,5 @@ import br.com.bank.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
     
+    
 }
